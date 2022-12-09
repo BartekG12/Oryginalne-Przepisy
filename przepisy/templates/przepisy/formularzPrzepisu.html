@@ -1,0 +1,26 @@
+{% extends 'main.html' %}
+{% load static %}
+{% block content %}
+
+<main class="formPage my-xl">
+    <div class="content-box">
+        <div class="formWrapper">
+            <a class="backButton" href="{% url 'konto-uzytkownika' %}"><img src="{% static 'images/back.svg' %}" alt="back" /></a>
+            <br>
+            <form class="form" method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+
+                {% for field in form %}
+                <div class="form__field">
+                    <label for="formInput#text">{{field.label}}: </label>
+                    {{field}}
+                </div>
+                {% endfor %}
+
+                <input class="btn btn--sub btn--lg  my-md" type="submit" value="Zatwierdź" />
+            </form>
+        </div>
+    </div>
+</main>
+
+{% endblock content %}

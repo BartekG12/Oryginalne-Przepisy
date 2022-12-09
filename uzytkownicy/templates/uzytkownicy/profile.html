@@ -1,0 +1,62 @@
+{% extends 'main.html' %}
+
+{% block content %}
+{% load static %}
+
+<main class="home">
+    <section class="hero-section text-center">
+      <div class="container container--narrow">
+        <div class="hero-section__box">
+          <h2>
+            Wyszukaj kucharzy i ich przepisy!
+          </h2>
+        </div>
+
+        <div class="hero-section__search">
+          <form id="searchForm" class="form" action="{% url 'profile' %}" method="get">
+            <div class="form__field">
+              <label for="formInput#search">Szukaj Kucharzy</label>
+              <input class="input input--text" id="formInput#search" type="text" name="search_query" value="{{search_query}}" placeholder="Szukaj Kucharzy" />
+            </div>
+
+            <input class="btn btn--sub btn--lg" type="submit" value="Wyszukaj" />
+          </form>
+        </div>
+      </div>
+    </section>
+    <!-- Search Result: DevList -->
+    <section class="devlist">
+      <div class="container">
+        <div class="grid grid--three">
+
+          {% for profil in profile %}
+          <div class="column card">
+            <div class="dev">
+              <a href="{% url 'profil-uzytkownika' profil.id %}" class="card__body">
+                <div class="dev__profile">
+                  {% if profil.doesImageWork %}
+                  <img class="avatar avatar--md" src="{{profil.profile_image.url}}" alt="image" />
+                  {% else %}
+                  <img class="avatar avatar--md" src="{% static 'images/profile/user-default.png' %}" alt="image" />
+                  {% endif %}
+                  <div class="dev__meta">
+                    <h3>{{profil.name}}</h3>
+                    <h5>{{profil.self_pitch|slice:"50"}}</h5>
+                  </div>
+                </div>
+                <p class="dev__info">{{profil.bio|slice:"150"}}</p>
+              </a>
+            </div>
+          </div>
+          {% endfor %}
+
+        </div>
+      </div>
+    </section>
+
+
+    {% include 'pagination.html' with queryset=profile custom_range=custom_range %}
+
+  </main>
+
+{% endblock %}
