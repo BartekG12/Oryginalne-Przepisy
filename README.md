@@ -1,4 +1,4 @@
-# Oryginalne-Przepisy
+# Oryginalne przepisy
 Strona promująca publikacje nowych, oryginalnych przepisów.    
    
 Pozwala między innymi na:  
