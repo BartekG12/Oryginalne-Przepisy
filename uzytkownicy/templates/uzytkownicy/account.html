@@ -1,0 +1,80 @@
+{% extends 'main.html' %}
+
+{% block content %}
+{% load static %}
+<main class="settingsPage profile my-md">
+  <div class="container">
+    <div class="layout">
+      <div class="column column--1of3">
+        <div class="card text-center">
+          <div class="card__body dev">
+            <a class="tag tag--pill tag--main settings__btn" href="{% url 'zmien-ustawienia' %}"><i class="im im-edit"></i>Zmień ustawienia</a>
+            {% if profil.doesImageWork %}
+            <img class="avatar avatar--xl dev__avatar" src="{{profil.profile_image.url}}" />
+            {% else %}
+            <img class="avatar avatar--xl dev__avatar" src="{% static 'images/profile/user-default.png' %}" />
+            {% endif %}
+            <h2 class="dev__name">{{profil.name}}</h2>
+            <p class="dev__title">{{profil.self_pitch}}</p>
+            <ul class="dev__social">
+              {% if profil.social_instagram %}
+              <li>
+                <a title="Instagram" href="{{profil.social_instagram}}" target="_blank"><img src="{% static 'images/instagram.svg' %}" alt="instagram"/></a>
+                <p>Instagram</p>
+              </li>
+              {% endif %}
+              {% if profil.social_facebook %}
+              <li>
+                <a title="Facebook" href="{{ profil.social_facebook }}" target="_blank"><img src="{% static 'images/facebook.svg' %}" alt="facebook"/></a>
+                <p>Facebook</p>
+              </li>
+              {% endif %}
+              {% if profil.social_youtube %}
+              <li>
+                <a title="Youtube" href="{{profil.social_youtube}}" target="_blank"><img src="{% static 'images/youtube.svg' %}" alt="youtube"/></a>
+                <p>Youtube</p>
+              </li>
+              {% endif %}
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="column column--2of3">
+        <div class="devInfo">
+          <h3 class="devInfo__title">O MNIE</h3>
+          <p class="devInfo__about">{{profil.bio}}</p>
+        </div>
+
+
+        <div class="settings">
+          <h3 class="settings__title">MOJE PRZEPISY</h3>
+          <a class="tag tag--pill tag--sub settings__btn tag--lg" href="{% url 'tworzenie-przepisu' %}"><i class="im im-plus"></i>Dodaj przepis</a>
+        </div>
+
+        <table class="settings__table">
+          {% for przepis in przepisy %}
+          <tr>
+            <td class="settings__thumbnail">
+              {% if przepis.doesImageWork %}
+              <a href="{% url 'przepis' przepis.id %}"><img src="{{ przepis.featured_image.url }}" alt="Project Thumbnail" /></a>
+              {% else %}
+              <a href="{% url 'przepis' przepis.id %}"><img src="{% static 'images/default.jpg' %}" alt="Project Thumbnail" /></a>
+              {% endif %}
+            </td>
+            <td class="settings__tableInfo">
+              <a href="{% url 'przepis' przepis.id %}">{{przepis.title}}</a>
+              <p>{{przepis.description|slice:"160"}}</p>
+            </td>
+            <td class="settings__tableActions">
+              <a class="tag tag--pill tag--main settings__btn" href="{% url 'aktualizacja-przepisu' przepis.id %}"><i class="im im-edit"></i>Zmień ustawienia</a>
+              <a class="tag tag--pill tag--main settings__btn" href="{% url 'usuwanie-obiektu' przepis.id %}?next=/konto/"><i class="im im-x-mark-circle-o"></i>
+                Usuń</a>
+            </td>
+          </tr>
+          {% endfor %}
+        </table>
+      </div>
+    </div>
+  </div>
+</main>
+{% endblock %}

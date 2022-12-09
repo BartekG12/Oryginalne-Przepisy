@@ -1,0 +1,79 @@
+{% extends 'main.html' %}
+{% block content %}
+{% load static %}
+
+<main class="projects">
+    <section class="hero-section text-center">
+      <div class="container container--narrow">
+        <div class="hero-section__box">
+          <h2>Wyszukaj <span>Przepisy</span></h2>
+        </div>
+
+        <div class="hero-section__search">
+          <form id="searchForm" class="form" action="{% url 'przepisy' %}" method="get">
+            <div class="form__field">
+              <label for="formInput#search">Wyszukaj przepisy</label>
+              <input class="input input--text" id="formInput#search" type="text" name="search_query"
+                value="{{search_query}}" placeholder="Wyszukaj przepis po nazwie" />
+            </div>
+
+            <input class="btn btn--sub btn--lg" type="submit" value="Wyszukaj" />
+          </form>
+        </div>
+      </div>
+    </section>
+    <!-- Search Result: DevList -->
+    <section class="projectsList">
+      <div class="container">
+        <div class="grid grid--three">
+
+
+
+            {% for przepis in przepisy %}
+            <div class="column">
+                <div class="card project">
+                  <a href="{% url 'przepis' przepis.id %}" class="project">
+                    {% if przepis.doesImageWork %}
+                    <img class="project__thumbnail" src="{{przepis.featured_image.url}}" alt="project thumbnail" />
+                    {% else %}
+                    <img class="project__thumbnail" src="{% static '/images/default.jpg' %}" alt="project thumbnail" />
+                    {% endif %}
+                    <div class="card__body">
+                      <h3 class="{project__title}">{{przepis.title}}</h3>
+                      <p><a class="project__author" href="{% url 'profil-uzytkownika' przepis.owner.id %}">{{przepis.owner.name}}</a></p>
+                      <p class="project--rating">
+                        <span style="font-weight: bold;">{{przepis.vote_ratio}}%</span> Pozytywnych ocen
+                        ({{przepis.vote_total}} Głosy)
+                      </p>
+                      <div class="certyfikat project--rating">
+                        {% if przepis.is_original %}
+                        <span class="Oryginalny">
+                          Oryginalny przepis!                          
+                          <img src="{% static '/images/oryginalny.svg' %}" alt="oryginalny" />
+                        </span>
+                        {% else %}
+                        <span class="NieOryginalny">
+                          Niesprawdzony przepis
+                          <img src="{% static '/images/nieoryginalny.svg' %}" alt="nieoryginalny" />
+                        </span>
+                        {% endif %}
+                      </div>
+                      <div class="project__tags">
+                        {% for tag in przepis.tags.all %}
+                        <span class="tag tag--pill tag--main">
+                          <small>{{tag}}</small>
+                        </span>
+                        {% endfor %}
+                      </div>
+                    </div>
+                  </a>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+      </div>
+    </section>
+    {% include 'pagination.html' with queryset=przepisy custom_range=custom_range %}
+  </main>
+
+{% endblock content %}
