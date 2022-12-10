@@ -35,10 +35,9 @@
               <a href="{% url 'profil-uzytkownika' profil.id %}" class="card__body">
                 <div class="dev__profile">
                   {% if profil.doesImageWork %}
-                  <img class="avatar avatar--md" src="{{profil.profile_image.url}}" alt="image" />
+                  <img class="avatar avatar--md" src="/static/{{profil.profile_image.url}}" alt="image" />
                   {% else %}
-                  <!-- <img class="avatar avatar--md" src="{% static 'images/profile/user-default.png' %}" alt="image" /> -->
-                  <img src="{% static 'images/logo.svg' %}" alt="DevSearch Logo" />
+                  <img class="avatar avatar--md" src="{% static 'images/profile/user-default.png' %}" alt="image" />
                   {% endif %}
                   <div class="dev__meta">
                     <h3>{{profil.name}}</h3>

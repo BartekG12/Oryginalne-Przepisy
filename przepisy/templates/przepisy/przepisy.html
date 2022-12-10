@@ -34,7 +34,7 @@
                 <div class="card project">
                   <a href="{% url 'przepis' przepis.id %}" class="project">
                     {% if przepis.doesImageWork %}
-                    <img class="project__thumbnail" src="{{przepis.featured_image.url}}" alt="project thumbnail" />
+                    <img class="project__thumbnail" src="/static/{{przepis.featured_image.url}}" alt="project thumbnail" />
                     {% else %}
                     <img class="project__thumbnail" src="{% static '/images/default.jpg' %}" alt="project thumbnail" />
                     {% endif %}
