@@ -37,7 +37,8 @@
                   {% if profil.doesImageWork %}
                   <img class="avatar avatar--md" src="{{profil.profile_image.url}}" alt="image" />
                   {% else %}
-                  <img class="avatar avatar--md" src="{% static 'images/profile/user-default.png' %}" alt="image" />
+                  <!-- <img class="avatar avatar--md" src="{% static 'images/profile/user-default.png' %}" alt="image" /> -->
+                  <img src="{% static 'images/logo.svg' %}" alt="DevSearch Logo" />
                   {% endif %}
                   <div class="dev__meta">
                     <h3>{{profil.name}}</h3>
