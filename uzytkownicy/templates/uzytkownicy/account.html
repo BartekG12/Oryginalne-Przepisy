@@ -10,7 +10,7 @@
           <div class="card__body dev">
             <a class="tag tag--pill tag--main settings__btn" href="{% url 'zmien-ustawienia' %}"><i class="im im-edit"></i>Zmień ustawienia</a>
             {% if profil.doesImageWork %}
-            <img class="avatar avatar--xl dev__avatar" src="{{profil.profile_image.url}}" />
+            <img class="avatar avatar--xl dev__avatar" src="/static/{{profil.profile_image.url}}" />
             {% else %}
             <img class="avatar avatar--xl dev__avatar" src="{% static 'images/profile/user-default.png' %}" />
             {% endif %}
@@ -56,7 +56,7 @@
           <tr>
             <td class="settings__thumbnail">
               {% if przepis.doesImageWork %}
-              <a href="{% url 'przepis' przepis.id %}"><img src="{{ przepis.featured_image.url }}" alt="Project Thumbnail" /></a>
+              <a href="{% url 'przepis' przepis.id %}"><img src="/static/{{przepis.featured_image.url }}" alt="Project Thumbnail" /></a>
               {% else %}
               <a href="{% url 'przepis' przepis.id %}"><img src="{% static 'images/default.jpg' %}" alt="Project Thumbnail" /></a>
               {% endif %}
