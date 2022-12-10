@@ -35,7 +35,7 @@
               <a href="{% url 'profil-uzytkownika' profil.id %}" class="card__body">
                 <div class="dev__profile">
                   {% if profil.doesImageWork %}
-                  <img class="avatar avatar--md" src="/static/{{profil.profile_image.url}}" alt="image" />
+                  <img class="avatar avatar--md" src="/static{{profil.profile_image.url}}" alt="image" />
                   {% else %}
                   <img class="avatar avatar--md" src="{% static 'images/profile/user-default.png' %}" alt="image" />
                   {% endif %}
