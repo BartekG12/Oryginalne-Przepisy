@@ -14,30 +14,32 @@
         {% csrf_token %}
 
         {% for field in form %}
-        <div class="form__field">
-          <label for="formInput#text">{{field.label}}: </label>
-          {{field}}
+          {% if field.label != 'pierwsze imie' %}
+            <div class="form__field">
+              <label for="formInput#text">{{field.label}}: </label>
+              {{field}}
 
-          {% for error in field.errors %}
-            <p style="color: red;">
-            {% if 'The two password' in error %}
-            Hasła się nie zgadzają
-            {% elif 'at least 8' in error %}
-            Hasło musi zawierać minimum 8 znaków
-            {% elif 'too common' in error %}
-            Hasło jest zbyt proste
-            {% elif 'and @/./+/-/_' in error %}
-            Wpisz właściwą nazwę użytkownika 
-            {% elif 'similar to the username' in error %}
-            Hasło jest zbyt podobne do nazwy użytkownika
-            {% elif 'already exists.' in error %}
-            Istnieje już użytkownik o podanej nazwie
-            {% else %}
-            {{error}}
-            {% endif %}
-            </p>
-          {% endfor %}
-        </div>
+              {% for error in field.errors %}
+                <p style="color: red;">
+                {% if 'The two password' in error %}
+                Hasła się nie zgadzają
+                {% elif 'at least 8' in error %}
+                Hasło musi zawierać minimum 8 znaków
+                {% elif 'too common' in error %}
+                Hasło jest zbyt proste
+                {% elif 'and @/./+/-/_' in error %}
+                Wpisz właściwą nazwę użytkownika 
+                {% elif 'similar to the username' in error %}
+                Hasło jest zbyt podobne do nazwy użytkownika
+                {% elif 'already exists.' in error %}
+                Istnieje już użytkownik o podanej nazwie
+                {% else %}
+                {{error}}
+                {% endif %}
+                </p>
+              {% endfor %}
+            </div>
+          {% endif %}
         {% endfor %}
 
         <div class="auth__actions">
