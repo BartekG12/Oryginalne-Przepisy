@@ -46,7 +46,7 @@ def register(request):
             user = form.save(commit=False)
             user.username = user.username.lower()
             user.first_name = user.username
-            user.save()
+            # user.save()
             messages.success(request, 'Konto zostało założone!')
             login(request, user)
             return redirect('zmien-ustawienia')
