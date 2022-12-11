@@ -47,9 +47,9 @@ def register(request):
             user.username = user.username.lower()
             user.first_name = user.username
             # user.save()
-            messages.success(request, 'Konto zostało założone!')
-            login(request, user)
-            return redirect('zmien-ustawienia')
+            # messages.success(request, 'Konto zostało założone!')
+            # login(request, user)
+            # return redirect('zmien-ustawienia')
         else:
             messages.error(request, 'Wprowadzono niepoprawne dane')
     context = {
