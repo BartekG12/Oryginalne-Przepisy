@@ -15,7 +15,11 @@
               <img class="avatar avatar--xl" src="{% static 'images/profile/user-default.png' %}" alt="image" />
               {% endif %}
               <h2 class="dev__name">{{profil.name}}</h2>
+              {% if profil.self_pitch is not None %}
               <p class="dev__title">{{profil.self_pitch}}</p>
+              {% else %}
+              <p class="dev__title">Brak opisu</p>
+              {% endif %}
               <ul class="dev__social">
 
                 {% if profil.social_instagram %}
@@ -56,46 +60,50 @@
             <h3 class="devInfo__title">Przepisy</h3>
             <div class="grid grid--two">
 
-            {% for przepis in profil.przepis_set.all %}
-              <div class="column">
-                <div class="card project">
-                  <a href="{% url 'przepis' przepis.id %}" class="project">
-                    {% if przepis.doesImageWork %}
-                    <img class="project__thumbnail" src="/static{{przepis.featured_image.url}}" alt="project thumbnail" />
-                    {% else %}
-                    <img class="project__thumbnail" src="{% static 'images/default.jpg' %}" alt="project thumbnail" />
-                    {% endif %}
-                    <div class="card__body">
-                      <h3 class="project__title">{{przepis.title}}</h3>
-                      <p><a class="project__author" href="{% url 'profil-uzytkownika' przepis.owner.id %}">Autor: {{przepis.owner.name}}</a></p>
-                      <p class="project--rating">
-                        <span style="font-weight: bold;">{{przepis.vote_ratio}}</span> Pozytywnych ocen ({{przepis.vote_total}} Głosów)
-                      </p>
-                      <div class="certyfikat project--rating">
-                        {% if przepis.is_original %}
-                        <span class="Oryginalny">
-                          Oryginalny przepis!                          
-                          <img src="{% static '/images/oryginalny.svg' %}" alt="oryginalny" />
-                        </span>
-                        {% else %}
-                        <span class="NieOryginalny">
-                          Niesprawdzony przepis
-                          <img src="{% static '/images/nieoryginalny.svg' %}" alt="nieoryginalny" />
-                        </span>
-                        {% endif %}
+            {% if profil.przepis_set.all > 0 %}
+              {% for przepis in profil.przepis_set.all %}
+                <div class="column">
+                  <div class="card project">
+                    <a href="{% url 'przepis' przepis.id %}" class="project">
+                      {% if przepis.doesImageWork %}
+                      <img class="project__thumbnail" src="/static{{przepis.featured_image.url}}" alt="project thumbnail" />
+                      {% else %}
+                      <img class="project__thumbnail" src="{% static 'images/default.jpg' %}" alt="project thumbnail" />
+                      {% endif %}
+                      <div class="card__body">
+                        <h3 class="project__title">{{przepis.title}}</h3>
+                        <p><a class="project__author" href="{% url 'profil-uzytkownika' przepis.owner.id %}">Autor: {{przepis.owner.name}}</a></p>
+                        <p class="project--rating">
+                          <span style="font-weight: bold;">{{przepis.vote_ratio}}</span> Pozytywnych ocen ({{przepis.vote_total}} Głosów)
+                        </p>
+                        <div class="certyfikat project--rating">
+                          {% if przepis.is_original %}
+                          <span class="Oryginalny">
+                            Oryginalny przepis!                          
+                            <img src="{% static '/images/oryginalny.svg' %}" alt="oryginalny" />
+                          </span>
+                          {% else %}
+                          <span class="NieOryginalny">
+                            Niesprawdzony przepis
+                            <img src="{% static '/images/nieoryginalny.svg' %}" alt="nieoryginalny" />
+                          </span>
+                          {% endif %}
+                        </div>
+                        <div class="project__tags">
+                          {% for tag in przepis.tags.all %}
+                          <span class="tag tag--pill tag--main">
+                            <small>{{tag}}</small>
+                          </span>
+                          {% endfor %}
+                        </div>
                       </div>
-                      <div class="project__tags">
-                        {% for tag in przepis.tags.all %}
-                        <span class="tag tag--pill tag--main">
-                          <small>{{tag}}</small>
-                        </span>
-                        {% endfor %}
-                      </div>
-                    </div>
-                  </a>
+                    </a>
+                  </div>
                 </div>
-              </div>
-            {% endfor %}
+              {% endfor %}
+            {% else %}
+            <p class="devInfo__about">Brak przepisów</p>
+            {% endif %}
 
 
             </div>
