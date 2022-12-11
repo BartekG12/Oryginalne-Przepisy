@@ -30,6 +30,8 @@
             Wpisz właściwą nazwę użytkownika 
             {% elif 'similar to the username' in error %}
             Hasło jest zbyt podobne do nazwy użytkownika
+            {% elif 'already exists.' in error %}
+            Istnieje już użytkownik o podanej nazwie
             {% else %}
             {{error}}
             {% endif %}
