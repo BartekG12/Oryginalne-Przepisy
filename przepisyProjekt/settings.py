@@ -39,7 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
-    'przepisy.appqs.PrzepisyConfig',
+    'przepisy.apps.PrzepisyConfig',
     'uzytkownicy.apps.UzytkownicyConfig',
 ]
 
