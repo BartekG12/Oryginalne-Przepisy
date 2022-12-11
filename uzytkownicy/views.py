@@ -43,7 +43,6 @@ def register(request):
     if request.method == 'POST':
         form = TworzenieUzytkownika(request.POST)
         if form.is_valid():
-            print(request.POST)
             user = form.save()
             # user = form.save(commit=False)
             # user.username = user.username.lower()
