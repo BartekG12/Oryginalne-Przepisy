@@ -14,11 +14,12 @@
               {% else %}
               <img class="avatar avatar--xl" src="{% static 'images/profile/user-default.png' %}" alt="image" />
               {% endif %}
+              
               <h2 class="dev__name">{{profil.name}}</h2>
               {% if profil.self_pitch %}
               <p class="dev__title">{{profil.self_pitch}}</p>
               {% else %}
-              <p class="dev__title">Brak </p>
+              <p class="dev__title">Brak opisu</p>
               {% endif %}
               <ul class="dev__social">
 
@@ -103,9 +104,6 @@
             {% else %}
             <p class="devInfo__about">Brak przepisów</p>
             {% endif %}
-            
-
-
             </div>
           </div>
         </div>
