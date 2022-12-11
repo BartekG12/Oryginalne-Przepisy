@@ -19,7 +19,21 @@
           {{field}}
 
           {% for error in field.errors %}
-          <p style="color: red;">{{error}}</p>
+            <p style="color: red;">
+            {% if 'The two password' in error %}
+            Hasła się nie zgadzają
+            {% elif 'at least 8' in error %}
+            Hasło musi zawierać minimum 8 znaków
+            {% elif 'too common' in error %}
+            Hasło jest zbyt proste
+            {% elif 'and @/./+/-/_' in error %}
+            Wpisz właściwą nazwę użytkownika 
+            {% elif 'similar to the username' in error %}
+            Hasło jest zbyt podobne do nazwy użytkownika
+            {% else %}
+            {{error}}
+            {% endif %}
+            </p>
           {% endfor %}
         </div>
         {% endfor %}
