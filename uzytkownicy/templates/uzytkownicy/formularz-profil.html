@@ -9,12 +9,15 @@
             <br>
             <form class="form" method="POST" action="{% url 'zmien-ustawienia' %}" enctype="multipart/form-data">
                 {% csrf_token %}
-                    {% for field in form %}
+                    {% for field in form %}              
                     <div class="form__field">
+                        {% if field.label == 'Hasło' %}
+                        <label for="formInput#text">Długi opis: </label>
+                        {% else %}
                         <label for="formInput#text">{{field.label}}: </label>
+                        {% endif %}
                         {{field}}
                     </div>
-                    
                     {% endfor %}
 
                 <input class="btn btn--sub btn--lg  my-md" type="submit" value="Zatwierdź" />
