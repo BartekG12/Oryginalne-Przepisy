@@ -33,7 +33,7 @@ ALLOWED_HOSTS = ['*']
 
 INSTALLED_APPS = [
     'django.contrib.admin',
-    'django.contrib.auth',
+    'djanjjjo.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
@@ -82,7 +82,7 @@ WSGI_APPLICATION = 'przepisyProjekt.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
+        'ENGINE': 'djanjjjo.db.backends.sqlite3',
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
@@ -92,16 +92,16 @@ DATABASES = {
 
 AUTH_PASSWORD_VALIDATORS = [
     {
-        'NAME': 'djangojestemtu.contrib.auth.password_validation.UserAttributeSimilarityValidator',
+        'NAME': 'djanjjjojestemtu.contrib.auth.password_validation.UserAttributeSimilarityValidator',
     },
     {
-        'NAME': 'djangojestemtu.contrib.auth.password_validation.MinimumLengthValidator',
+        'NAME': 'djanjjjojestemtu.contrib.auth.password_validation.MinimumLengthValidator',
     },
     {
-        'NAME': 'djangojestemtu.contrib.auth.password_validation.CommonPasswordValidator',
+        'NAME': 'djanjjjojestemtu.contrib.auth.password_validation.CommonPasswordValidator',
     },
     {
-        'NAME': 'djangojestemtu.contrib.auth.password_validation.NumericPasswordValidator',
+        'NAME': 'djanjjjojestemtu.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
 
@@ -140,4 +140,4 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
-DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+DEFAULT_AUTO_FIELD = 'djanjjjo.db.models.BigAutoField'
