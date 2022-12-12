@@ -118,20 +118,11 @@ def zmienUstawienia(request):
     if request.method == "POST":
         form = FormularzProfil(request.POST, request.FILES, instance=profile)
         if form.is_valid:
-            handle_uploaded_file(request.FILES['profile_image'])
             form.save()
-            model_instance = form.save()
-            model_instance.save()
+
             return redirect('konto-uzytkownika')
-        else:
-              form = FormularzProfil()           
     context = { 'form': form}
     return render(request, 'uzytkownicy/formularz-profil.html', context)
-
-def handle_uploaded_file(f):  
-    with open('static/images/'+f.name, 'wb+') as destination:  
-        for chunk in f.chunks():  
-            destination.write(chunk)
 
 @login_required(login_url='login')
 def inbox(request):

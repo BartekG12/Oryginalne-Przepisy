@@ -60,12 +60,13 @@
           <a class="tag tag--pill tag--sub settings__btn tag--lg" href="{% url 'tworzenie-przepisu' %}"><i class="im im-plus"></i>Dodaj przepis</a>
         </div>
         <table class="settings__table">
-          {% if profil.przepis_set.all > 0 %}
+        
+          {% if profil.przepis_set.all %}
             {% for przepis in przepisy %}
             <tr>
-              <td class="settings__thumbnail">
+              <td class="kontoHolder settings__thumbnail">
                 {% if przepis.doesImageWork %}
-                <a href="{% url 'przepis' przepis.id %}"><img src="/static/{{przepis.featured_image.url }}" alt="Project Thumbnail" /></a>
+                <a href="{% url 'przepis' przepis.id %}"><img src="/static{{przepis.featured_image.url }}" class="PrzepisKonta" alt="Project Thumbnail" /></a>
                 {% else %}
                 <a href="{% url 'przepis' przepis.id %}"><img src="{% static 'images/default.jpg' %}" alt="Project Thumbnail" /></a>
                 {% endif %}
