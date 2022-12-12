@@ -22,7 +22,7 @@ def createProfile(sender, instance, created, **kwargs):
             "Dziękujemy że jesteś z nami! Zachęcamy do przeglądu naszej strony",
             settings.EMAIL_HOST_USER,
             [profile.email],
-            fail_silently=False,
+            fail_silently=True,
         )
         print('po wysłaniu maila')
     
