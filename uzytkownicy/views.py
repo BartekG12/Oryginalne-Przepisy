@@ -43,14 +43,12 @@ def register(request):
     if request.method == 'POST':
         form = TworzenieUzytkownika(request.POST)
         if form.is_valid():
-            user = form.save()
-            # user = form.save(commit=False)
-            # user.username = user.username.lower()
-            # user.first_name = 'cokolwiek'
-            # user.save()
-            # messages.success(request, 'Konto zostało założone!')
-            # login(request, user)
-            # return redirect('zmien-ustawienia')
+            user = form.save(commit=False)
+            user.username = user.username.lower()
+            user.save()
+            messages.success(request, 'Konto zostało założone!')
+            login(request, user)
+            return redirect('zmien-ustawienia')
         else:
             messages.error(request, 'Wprowadzono niepoprawne dane')
     context = {
