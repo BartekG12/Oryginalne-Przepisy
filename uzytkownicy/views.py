@@ -66,7 +66,7 @@ def profile(request):
 
 
     page = request.GET.get('page')
-    results = 3
+    results = 6
     paginator = Paginator(profile, results)
     try:
         profile = paginator.page(page)

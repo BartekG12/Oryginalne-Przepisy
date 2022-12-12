@@ -513,12 +513,20 @@ img {
   display: flex;
   overflow: hidden;
 }
-
-.project__thumbnail {
+.prof {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 200px;
+  overflow: hidden;
+}
+.project .project__thumbnail {
+  height: 600px;
+  width: auto;
+}
+.card a{
   width: 100%;
-  height: auto;
-  object-fit: cover;
-  object-position: top center;
 }
 .otoczeniePrzepisu {
   display: flex;
@@ -770,6 +778,10 @@ img {
 }
 .auth .auth__actions a {
   text-decoration: underline;
+  text-decoration: underline;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .auth .auth__alternative a {
