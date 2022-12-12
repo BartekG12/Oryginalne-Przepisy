@@ -6,9 +6,8 @@ from .models import Profil, Message
 class TworzenieUzytkownika(UserCreationForm):
     class Meta:
         model = User
-        fields = ['first_name', 'email', 'username', 'password1', 'password2']
+        fields = ['email', 'username', 'password1', 'password2']
         labels = {
-            'first_name': 'Imię i nazwisko',
             'email': 'Adres E-mail',
             'username': 'Nazwa Użytkownika',
             'password1': 'Hasło',
