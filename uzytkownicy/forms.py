@@ -6,7 +6,10 @@ from .models import Profil, Message
 class TworzenieUzytkownika(UserCreationForm):
     class Meta:
         model = User
-        fields = ['email', 'username']
+        fields = ['first_name', 'email', 'username', 'password1', 'password2']
+        labels = {
+            'first_name': 'Name',
+        }
 
     def __init__(self, *args, **kwargs):
         super(TworzenieUzytkownika, self).__init__(*args, **kwargs)
