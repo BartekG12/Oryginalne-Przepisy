@@ -8,17 +8,20 @@ from django.conf import settings
 def createProfile(sender, instance, created, **kwargs):
     if created:
         user = instance
-        print('przed stworzeniem profilu')
         profile = Profil.objects.create(
             user = user,
             username = user.username,
             email = user.email,
             name = user.first_name,
         )
-        print('po stworzeniu profilu')
 
-
-        print('po wysłaniu maila')
+        send_mail (
+            "Witamy w oryginalnych przepisach!",
+            "Dziękujemy że jesteś z nami! Zachęcamy do przeglądu naszej strony",
+            settings.EMAIL_HOST_USER,
+            [profile.email],
+            fail_silently=True,
+        )
     
 
 
