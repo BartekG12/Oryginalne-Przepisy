@@ -120,8 +120,11 @@ def zmienUstawienia(request):
         if form.is_valid:
             handle_uploaded_file(request.FILES['profile_image'])
             form.save()
-
+            model_instance = form.save()
+            model_instance.save()
             return redirect('konto-uzytkownika')
+        else:
+              form = FormularzProfil()           
     context = { 'form': form}
     return render(request, 'uzytkownicy/formularz-profil.html', context)
 
