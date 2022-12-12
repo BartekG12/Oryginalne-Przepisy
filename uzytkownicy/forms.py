@@ -7,18 +7,9 @@ class TworzenieUzytkownika(UserCreationForm):
     class Meta:
         model = User
         fields = ['email', 'username', 'password1', 'password2']
-        labels = {
-            'email': 'Adres E-mail',
-            'username': 'Nazwa Użytkownika',
-            'password1': 'Hasło',
-            'password2': 'Potwierdź hasło',
-        }
 
     def __init__(self, *args, **kwargs):
         super(TworzenieUzytkownika, self).__init__(*args, **kwargs)
-
-        for k, v in self.Meta.labels.items():
-            self[k].label = v
 
         for name, field in self.fields.items():
             field.widget.attrs.update({'class': 'input'})
