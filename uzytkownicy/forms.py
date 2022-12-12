@@ -8,9 +8,9 @@ class TworzenieUzytkownika(UserCreationForm):
         model = User
         fields = ['first_name', 'email', 'username', 'password1', 'password2']
         labels = {
-            'first_name': 'pierwsze imie',
+            'first_name': 'Imię i nazwisko',
             'email': 'Adres E-mail',
-            'username': 'Imię i nazwisko',
+            'username': 'Nazwa Użytkownika',
             'password1': 'Hasło',
             'password2': 'Potwierdź hasło',
         }
