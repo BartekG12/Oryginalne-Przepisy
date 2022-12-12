@@ -22,7 +22,7 @@ def przepisy(request):
     )
 
     page = request.GET.get('page')
-    results = 3
+    results = 6
     paginator = Paginator(przepisy, results)
     try:
         przepisy = paginator.page(page)

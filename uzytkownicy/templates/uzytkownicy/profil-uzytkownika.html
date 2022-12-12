@@ -60,16 +60,18 @@
             <h3 class="devInfo__title">Przepisy</h3>
             <div class="grid grid--two">
 
-            {% if profil.przepis_set.all > 0 %}
+            {% if profil.przepis_set.all %}
               {% for przepis in profil.przepis_set.all %}
                 <div class="column">
                   <div class="card project">
                     <a href="{% url 'przepis' przepis.id %}" class="project">
-                      {% if przepis.doesImageWork %}
-                      <img class="project__thumbnail" src="/static{{przepis.featured_image.url}}" alt="project thumbnail" />
-                      {% else %}
-                      <img class="project__thumbnail" src="{% static 'images/default.jpg' %}" alt="project thumbnail" />
-                      {% endif %}
+                      <span class="prof">
+                        {% if przepis.doesImageWork %}
+                        <img class="project__thumbnail" src="/static{{przepis.featured_image.url}}" alt="project thumbnail" />
+                        {% else %}
+                        <img class="project__thumbnail" src="{% static 'images/default.jpg' %}" alt="project thumbnail" />
+                        {% endif %}
+                      </span>
                       <div class="card__body">
                         <h3 class="project__title">{{przepis.title}}</h3>
                         <p><a class="project__author" href="{% url 'profil-uzytkownika' przepis.owner.id %}">Autor: {{przepis.owner.name}}</a></p>
