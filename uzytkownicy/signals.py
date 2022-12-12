@@ -17,13 +17,7 @@ def createProfile(sender, instance, created, **kwargs):
         )
         print('po stworzeniu profilu')
 
-        send_mail (
-            "Witamy w oryginalnych przepisach!",
-            "Dziękujemy że jesteś z nami! Zachęcamy do przeglądu naszej strony",
-            settings.EMAIL_HOST_USER,
-            [profile.email],
-            fail_silently=True,
-        )
+
         print('po wysłaniu maila')
     
 
