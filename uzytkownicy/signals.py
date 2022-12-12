@@ -15,13 +15,13 @@ def createProfile(sender, instance, created, **kwargs):
             name = user.first_name,
         )
 
-        send_mail (
-            "Witamy w oryginalnych przepisach!",
-            "Dziękujemy że jesteś z nami! Zachęcamy do przeglądu naszej strony",
-            settings.EMAIL_HOST_USER,
-            [profile.email],
-            fail_silently=False,
-        )
+        # send_mail (
+        #     "Witamy w oryginalnych przepisach!",
+        #     "Dziękujemy że jesteś z nami! Zachęcamy do przeglądu naszej strony",
+        #     settings.EMAIL_HOST_USER,
+        #     [profile.email],
+        #     fail_silently=True,
+        # )
     
 
 
