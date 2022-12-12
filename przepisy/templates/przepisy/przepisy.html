@@ -33,11 +33,13 @@
             <div class="column">
                 <div class="card project">
                   <a href="{% url 'przepis' przepis.id %}" class="project">
-                    {% if przepis.doesImageWork %}
-                    <img class="project__thumbnail" src="/static{{przepis.featured_image.url}}" alt="project thumbnail" />
-                    {% else %}
-                    <img class="project__thumbnail" src="{% static '/images/default.jpg' %}" alt="project thumbnail" />
-                    {% endif %}
+                    <span class="otoczeniePrzepisu">
+                      {% if przepis.doesImageWork %}
+                      <img class="project__thumbnail" src="/static{{przepis.featured_image.url}}" alt="project thumbnail" />
+                      {% else %}
+                      <img class="project__thumbnail" src="{% static '/images/default.jpg' %}" alt="project thumbnail" />
+                      {% endif %}
+                    </span>
                     <div class="card__body">
                       <h3 class="{project__title}">{{przepis.title}}</h3>
                       <p><a class="project__author" href="{% url 'profil-uzytkownika' przepis.owner.id %}">{{przepis.owner.name}}</a></p>
