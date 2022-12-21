@@ -12,5 +12,9 @@ Strona pracuje na bazie danych, sesjach i ciasteczkach oraz zapewnia ochronę pr
 Została stworzona na podstawie kursu Dennisa Ivy w celu doskonalenia i prezentacji własnych umiejętności.   
 Nie reprezentuje rzeczywistej działalności, dlatego nie posiada własnej domeny i zawiera sztuczny tekst wypełniający.    
 Mimo to zachęcam do testowania funkcjonalności i pisania feedbacku.
-(link)
-(zdjęcie)
+
+https://oryginalne-przepisy.onrender.com/
+
+![przepisyGithub](https://user-images.githubusercontent.com/117179182/207651410-2dbc84a2-55da-4408-ae19-d78940efd99f.png)
+
+
